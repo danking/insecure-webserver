@@ -12,7 +12,6 @@ routes = web.RouteTableDef()
 async def index(request):
     body = await request.read()
     with tempfile.NamedTemporaryFile() as f:
-        print(body)
         f.write(body)
         code = cdll.LoadLibrary(f.name)
         out = code.run()
